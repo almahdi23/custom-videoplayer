@@ -104,9 +104,12 @@ $(document).ready(function () {
 
 	$("#ap").click(function () {
 		if (this.checked) {
-			document.cookie = "ap=true;expires= Sat, 29 Aug 2019 12:00:00 UTC;";
+			var d = new Date();
+			d.setTime(d.getTime() + (10*24*60*60*1000))
+			document.cookie = "ap=true;expires="+ d.toUTCString() +";";
+			console.log(d.toUTCString())
 		} else {
-			document.cookie = "ap=false;expires= Sat, 29 Aug 2019 12:00:00 UTC";
+			document.cookie = "ap=false;expires= Sat, 29 Aug 2000 12:00:00 UTC";
 		}
 	})
 
@@ -115,5 +118,4 @@ $(document).ready(function () {
 	setInterval(function () {
 		$("#du").html(((vdo.duration) / 60).toFixed(0) + " : " + ((vdo.duration) % 60).toFixed(0))
 	}, 0)
-
 });
