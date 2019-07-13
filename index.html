@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Video Page</title>
+	<link rel="stylesheet" href="icon/css/all.css" />
+	<link rel="stylesheet" href="icon/css/brands.css" />
+	<link rel="stylesheet" href="icon/css/fontawesome.css" />
+	<link rel="stylesheet" href="icon/css/regular.css" />
+	<link rel="stylesheet" href="icon/css/solid.css" />
+	<link rel="stylesheet" href="icon/css/svg-with-js.css" />
+	<link rel="stylesheet" href="icon/css/v4-shims.css" />
+	<link rel="stylesheet" href="map%2520file/bootstrap.css">
+	<link rel="stylesheet" href="css.css" type="text/css">
+	<script src="map%20file/jquery.js" type="text/javascript"></script>
+	<script src="before.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div class="main mainn">
+		<video controlslist="nodownload" id="video" class="video" src="video.mp4"></video>
+		<div class="play"><i class="fa fa-play i"></i></div>
+		<div class="pause sc"><i class="fa fa-pause i"></i></div>
+		<div id="controls" class="controls">
+			<div id="tb"></div>
+			<div id="ct"></div>
+			<input id="tr" type="range" min="0" max="98" step="0.01" value="0" />
+
+			<i id="play-pause" class="fa fa-play"></i>
+			<i class="fa fa-sound"></i>
+			<input id="sound" type="range" min="0" max="1" step="0.05" />
+			<div id="cdp">
+				<a id="ctp">0</a>
+				<a>/</a>
+				<a id="du"></a>
+			</div>
+		</div>
+	</div>
+	<input id="ap" type="checkbox">
+	<label for="ap">Autoplay</label>
+	<p id="demo"></p>
+	
+	<script src="JavaScript.js" type="text/javascript"></script>
+</body>
+
