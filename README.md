@@ -1,3 +1,3 @@
 # custom-videoplayer
 
-# run on a server
+# run on a local server
