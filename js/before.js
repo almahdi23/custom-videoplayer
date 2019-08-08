@@ -3,6 +3,6 @@ window.onload = function(){
 	var co = c.split("=");
 	var tf = co[1];
 	if(tf == "true"){
-		document.getElementById("ap").setAttribute("checked","");
+		document.getElementById("autoplay").setAttribute("checked","");
 	}
 }

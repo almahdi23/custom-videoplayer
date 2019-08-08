@@ -1,8 +1,7 @@
 * {
-	margin: 0;
-	padding: 0;
 	font-family: sans-serif;
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	position: relative;
 }
 
@@ -16,62 +15,94 @@
 	margin-left: 40px;
 	width: 700px;
 	height: 394px;
-}
-.mainn{
-	display: none;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 .video {
 	margin: 0px;
-	top: -3px;
 	left: 0px;
 	position: absolute;
 	width: 700px;
 	height: 400px;
 }
-.play{
+
+.play , .pause , .forword , .backword{
 	width: 70px;
 	height: 70px;
 	border-radius: 50%;
 	position: absolute;
-	left: 300px;
-	top: 170px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
 	background-color: rgba(0,0,0, 0.4);
-	transform: scale(0);
-}
-.pause{
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
-	position: absolute;
-	left: 300px;
-	top: 170px;
-	background-color: rgba(0,0,0, 0.4);
-	transform: scale(0);
+	-webkit-transform: scale(0);
+	    -ms-transform: scale(0);
+	        transform: scale(0);
 }
 .i{
-	position: relative;
-	top: 28px;
-	left: 28px;
+	position: absolute;
 	color: rgba(255,255,255, 0.5);
-	transform: scale(1.6);
+	-webkit-transform: scale(1.6);
+	    -ms-transform: scale(1.6);
+	        transform: scale(1.6);
 }
+
+/* toggle class for play-pause icon in the middle of video */
 .sc{
-	animation: as .6s 1 linear;
+	-webkit-animation: scle .6s 1 linear;
+	        animation: scle .6s 1 linear;
 }
-@keyframes as {
+
+@-webkit-keyframes scle {
 	0%{
-		transform: scale(0);
+		-webkit-transform: scale(0);
+		        transform: scale(0);
 	}
 	40%{
-		transform: scale(1);
+		-webkit-transform: scale(1);
+		        transform: scale(1);
 	}
 	60%{
-		transform: scale(1);
+		-webkit-transform: scale(1);
+		        transform: scale(1);
 	}
 	100%{
-		transform: scale(0);
+		-webkit-transform: scale(0);
+		        transform: scale(0);
 	}
 }
+@keyframes scle {
+	0%{
+		-webkit-transform: scale(0);
+		        transform: scale(0);
+	}
+	40%{
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+	}
+	60%{
+		-webkit-transform: scale(1);
+		        transform: scale(1);
+	}
+	100%{
+		-webkit-transform: scale(0);
+		        transform: scale(0);
+	}
+}
+
 .controls {
 	bottom: 0px;
 	position: absolute;
@@ -79,6 +110,8 @@
 	height: 40px;
 	background-color: rgba(0, 0, 0, 0.09);
 	display: none;
+	-webkit-transition: all 1s;
+	-o-transition: all 1s;
 	transition: all 1s;
 }
 
@@ -86,6 +119,12 @@
 	display: block;
 }
 
+/* top controls / video range slider container */
+.top {
+	z-index: 100;
+}
+
+/* video range slider */
 #tb {
 	position: absolute;
 	margin-left: 5px;
@@ -102,10 +141,14 @@
 	height: 4px;
 	width: 0px;
 	background-color: #fc4a4a;
+	-webkit-transition: all 0.000000s;
+	-o-transition: all 0.000000s;
 	transition: all 0.000000s;
 }
 #tr {
 	-webkit-appearance: none;
+	-moz-appearance: none;
+	     appearance: none;
 	position: absolute;
 	padding: 0px;
 	outline: 0px transparent;
@@ -118,38 +161,92 @@
 }
 #tr::-webkit-slider-thumb {
 	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
 	width: 9px;
 	height: 9px;
 	border-radius: 50%;
 	background-color: #ffffff;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+#tr::-moz-slider-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+#tr::slider-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	     appearance: none;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
 	transition: 0.3s;
 }
 #tr::-webkit-slider-thumb:active {
 	width: 10px;
 	height: 10px;
 }
+#tr::-moz-slider-thumb:active {
+	width: 10px;
+	height: 10px;
+}
+#tr::slider-thumb:active {
+	width: 10px;
+	height: 10px;
+}
+
+/* down controls */
+.down {
+	position: absolute;
+	width: 100%;
+	height: 36px;
+	bottom: 0px;
+	width: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	z-index: 50;
+}
+
+/* play-pause button */
 #play-pause {
 	position: absolute;
 	left: 15px;
-	top: 13px;
 	cursor: pointer;
 	color: #fff;
+	-webkit-transition: all 4s;
+	-o-transition: all 4s;
 	transition: all 4s;
 }
 
+/* sound range */
 #sound {
 	position: absolute;
 	-webkit-appearance: none;
 	width: 120px;
 	height: 4px;
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(255, 255, 255, 0.3);
 	outline: 0px transparent;
 	border-radius: 10px;
 	left: 47px;
-	top: 19.5px;
 	cursor: pointer;
 }
-
 #sound::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	width: 9px;
@@ -161,15 +258,26 @@
 	width: 10px;
 	height: 10px;
 }
+
 #cdp{
 	position: relative;
-	top: -5px;
 	left: 200px;
 }
 #cdp a{
 	color: #fff;
+	font-family: cursive;
 }
-#ap[type="checkbox"]{
+#fullscreen {
+	position: absolute;
+	right: 13px;
+	width: 18px;
+	height: 18px;
+	border: 2px solid #f1f1f1;
+	cursor: pointer;
+}
+
+/* auto play checkbox */
+#autoplay[type="checkbox"]{
 	position: absolute;
 	top: 30px;
 	left: 750px;
@@ -181,10 +289,11 @@
 	border-radius: 30px;
 	cursor: pointer;
 }
-#ap:checked[type="checkbox"]{
-	box-shadow: inset 0 0 7px .001px rgba(0,0,0,0.4);
+#autoplay:checked[type="checkbox"]{
+	-webkit-box-shadow: inset 0 0 7px .001px rgba(0,0,0,0.2);
+	        box-shadow: inset 0 0 7px .001px rgba(0,0,0,0.2);
 }
-#ap::before{
+#autoplay::before{
 	top: 1px;
 	left: 2px;
 	content: "";
@@ -193,10 +302,11 @@
 	height: 13px;
 	background-color: #77c4ff;
 	border-radius: 50%;
+	-webkit-transition: left .2s;
+	-o-transition: left .2s;
 	transition: left .2s;
 }
-
-#ap:checked[type="checkbox"]::before{
+#autoplay:checked[type="checkbox"]::before{
 	left: 24px;
 	background-color: #42b3ff;
 }
@@ -204,4 +314,8 @@ label{
 	position: absolute;
 	top: 30px;
 	left: 795px;
+}
+
+.disnone {
+	display: none;
 }
