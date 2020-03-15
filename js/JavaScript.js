@@ -6,23 +6,11 @@ $(document).ready(function () {
 	sound.value = s;
 	vdo.pause()
 
-	var cookies = document.cookie
-	var cookiesarray = cookies.split(";");
-	for (cook in cookiesarray) {
-		var cookie = cookiesarray[cook]
-		var cookiearray = cookie.split("=")
-		for (c in cookiearray) {
-			var cookiename = cookiearray[0]
-			if (cookiename == "ap") {
-				var cookievalue = cookiearray[1]
-				if (cookievalue == "true") {
-					vdo.play()
-					break;
-				} else if (cookievalue == "false") {
-					vdo.pause()
-				};
-			};
-		};
+	var apval = getcookie("ap")
+	if (apval == "true") {
+		vdo.play()
+	} else if (apval == "false") {
+		vdo.pause()
 	};
 
 	if (vdo.paused) {
@@ -186,4 +174,17 @@ $(document).ready(function () {
 
 	$(".main").removeClass("disnone");
 	$(".chkbox").removeClass("disnone");
+
+
+	function getcookie(name) {
+		var cookies = document.cookie
+		var cookiesarray = cookies.split(";")
+		for (c in cookiesarray) {
+			var cookie = cookiesarray[c]
+			var cookiearray = cookie.split("=")
+			if (cookiearray[0].trim() == name) {
+				return cookiearray[1]
+			}
+		}
+	}
 });
